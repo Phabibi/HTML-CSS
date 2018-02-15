@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <head>
+    <meta charset="utf-8">
+    <title>My Table</title>
+    <link rel="stylesheet" href="alert/dist/sweetalert.css">
+    <link rel = "stylesheet" href = "table.css"></link>
+    
+        <script src = "table.js"  media = "all"> </script>
+        
+  </head>
+
+<body id= "body">
+
+	<button id = "make table" class="w3-animate-opacity" type = 'button' onclick="tablemaker(21,21)"> Make Table </button>
+
+	<button  id = "solutions" class="w3-animate-opacity" type = 'button' onclick="solution_main_table()" > Solution </button>
+
+	<button  id = "hint" class="w3-animate-opacity" type = 'button' onclick="solution_table(21,21)" > Hint </button>
+
+	<button  id = "congrats" class="w3-animate-opacity" type = 'button' onclick = "check()"> check </button>
+
+	<button  id = "reset" class="w3-animate-opacity" type = 'button' "> Reset </button>
+  
+
+ 
+  <div class = "container" id = "container" style = "display: none">
+    <img id = "congradulation" src = "image4.gif">
+    <div class = "congardulation_message"> Congradulations </div>
+  </div>
+
+  <div class = "container_fail" id = "container_fail" style = "display: none">
+    <img style="width:160px; height:160px;" id = "try_again" src = "img5.gif">
+    <div class = "try_again_message"> Try again </div>
+  </div>
+
+	<table  class="w3-animate-opacity" id = "top" border = '1'> </table>
+	<table class="w3-animate-opacity" id = "bottom" border = '1'> </table>
+   	<table class="w3-animate-opacity" id = "the_table" border = '1'> </table>
+   	<table class="w3-animate-opacity" id = "solution" border = '1'> </table>
+
+ 
+ </body>
+
+ </html>
