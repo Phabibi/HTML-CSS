@@ -1,27 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="bobby, chan, male" >
-    <title>My page</title>
-    <script src = "script.js"></script>
-  </head>
-  <body>
-    <!-- page content -->
-    <h1> My FORM </h1>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="Parsa, Habibi, Male">
+  <title>My page</title>
+
+</head>
+
+<body>
+  <!-- page content -->
+  <h1> My FORM </h1>
   <div>
-    <form id = "form" name='simpleform' method='POST' action='http://localhost:8080'>
-       <label for="fname">F Name:</label> <input id = "fname" placeholder='first' name='fname' type='text' /> <br />
-       <label for="lname">L Name:</label> <input name='lname' placeholder='last' type='text' /> <br />
-       <label for="email">Email:</label> <input name='email' placeholder='email' type='text'/> <br />
-       <label for="age">Age:</label> <input name='age' placeholder='0' type='number' step='1' /> <br />
-       <div id = "start">
-       </div>
-       <input id = "send" type='submit' value='SEND' />
+    <form id="form" name='simpleform' method='POST' action='http://localhost:8080'>
 
-       <button type = "button" id ="New" onclick = "newuser()"> Create new </button> <br />
+      <div>
 
+        <label for="fname">F Name:</label> <input id="fname" placeholder='first' name='fname' type='text' /> <br />
+        <label for="lname">L Name:</label> <input name='lname' placeholder='last' type='text' /> <br />
+        <div id = "ogparent">
+        <label for="email">Email:</label> <input name='email' placeholder='email' type='email' />
+
+        <button type="button" onclick="newemail(this)">+</button>
+        <br />
+      </div>
+        <div id="emailstart"></div>
+
+        <label for="age">Age:</label> <input name='age' placeholder='0' type='number' step='1' /> <br />
+        <input id="emailcounter" name = "emailcount" type='hidden' value ="" /> </br>
+      </div>
+      <div id="start">
+
+      </div>
+     <button type="button" onclick="formsubmit()">Send</button>
+      <button type="button" id="New" onclick="newuser()"> Create new </button> <br />
+
+      <div style="display:none">
+        <div id="inputs">
+          <label for="fname">F Name:</label> <input id="fname" placeholder='first' name='fname' type='text' /> <br />
+          <label for="lname">L Name:</label> <input name='lname' placeholder='last' type='text' /> <br />
+        <div id = "emailparent">
+          <label for="email">Email:</label> <input name='email' placeholder='email' type='email' />
+          <button type="button" onclick="newemail(this)">+</button>
+        </br>
+      </div>
+          <label for="age">Age:</label> <input name='age' placeholder='0' type='number' step='1' /> <br />
+          <div style= "display:none">
+            <div id="emaildiv">
+            <label for="email">Email:</label> <input name='email' placeholder='email' type='email' />
+            </div>
+          </div>
+
+        </div>
+      </div>
     </form>
+
   </div>
-  </body>
+  <script  src="script.js"></script>
+
+</body>
+
 </html>

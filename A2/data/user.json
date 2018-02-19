@@ -1,6 +1,20 @@
 {
-  "fname": "Parsa",
-  "lname": "Habibister",
-  "email": "",
-  "age": ""
+  "fname": [
+    "Parsasomething",
+    ""
+  ],
+  "lname": [
+    "Habibi",
+    ""
+  ],
+  "email": [
+    "P1@yahoo.com",
+    "",
+    ""
+  ],
+  "age": [
+    "",
+    ""
+  ],
+  "emailcount": "1"
 }

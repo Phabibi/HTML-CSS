@@ -1,0 +1,39 @@
+<!DOCTYPE HTML><html>
+<head>
+<meta charset="utf-8">
+</head><body><h1>Table</h1><table id = "thetable" border = "1"></table><script type = "text/javascript">var jason_object = {
+  "fname": [
+    "Parsa",
+    "Jack",
+    ""
+  ],
+  "lname": [
+    "Habibi",
+    "",
+    ""
+  ],
+  "email": [
+    "Phabibi@sfu.ca",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "age": [
+    "21",
+    "",
+    ""
+  ],
+  "emailcount": "1,1"
+}
+									   var table = document.getElementById("thetable");										 var table_arr = new Array;										 table_arr[0] = table.insertRow(0);
+										 var the_table_top = ["First Name","Last Name","age","Email"];										 for(var j = 0 ; j < 4 ; j++ ){											 table_arr[0].insertCell(j);										 }
+										 for(var j = 0 ; j < the_table_top.length ;j++){
+											 table.rows[0].cells[j].innerHTML = the_table_top[j];
+										 }
+											for(var  i = 0; i <= jason_object.fname.length; i++){
+												if(jason_object.fname[i])											{
+												table_arr[i+1] = table.insertRow(i+1);													table_arr[i+1].insertCell(0);													table.rows[i+1].cells[0].innerHTML = jason_object.fname[i];
+												}
+
+											}</script></body></html>
