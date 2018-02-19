@@ -27,5 +27,5 @@ function newemail(bun){
 function formsubmit()
 {
   document.getElementById("emailcounter").value = emailarray
-  document.getElementById("form").submit();
+  document.getElementById("form1").submit();
 }

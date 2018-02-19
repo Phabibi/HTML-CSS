@@ -1,39 +1,84 @@
 <!DOCTYPE HTML><html>
 <head>
 <meta charset="utf-8">
-</head><body><h1>Table</h1><table id = "thetable" border = "1"></table><script type = "text/javascript">var jason_object = {
-  "fname": [
-    "Parsa",
-    "Jack",
-    ""
-  ],
-  "lname": [
-    "Habibi",
-    "",
-    ""
-  ],
-  "email": [
-    "Phabibi@sfu.ca",
-    "",
-    "",
-    "",
-    ""
-  ],
-  "age": [
-    "21",
-    "",
-    ""
-  ],
-  "emailcount": "1,1"
-}
-									   var table = document.getElementById("thetable");										 var table_arr = new Array;										 table_arr[0] = table.insertRow(0);
-										 var the_table_top = ["First Name","Last Name","age","Email"];										 for(var j = 0 ; j < 4 ; j++ ){											 table_arr[0].insertCell(j);										 }
-										 for(var j = 0 ; j < the_table_top.length ;j++){
-											 table.rows[0].cells[j].innerHTML = the_table_top[j];
-										 }
-											for(var  i = 0; i <= jason_object.fname.length; i++){
-												if(jason_object.fname[i])											{
-												table_arr[i+1] = table.insertRow(i+1);													table_arr[i+1].insertCell(0);													table.rows[i+1].cells[0].innerHTML = jason_object.fname[i];
-												}
+<link rel="stylesheet" type="text/css" href="user.css"></head><body><h1>Table</h1><table id = "thetable" border = "1"></table><script type = "text/javascript">var jason_object = [
+  {},
+  {
+    "fname": [
+      "Parsa",
+      ""
+    ],
+    "lname": [
+      "Habibi",
+      ""
+    ],
+    "age": [
+      "2018-02-07",
+      ""
+    ],
+    "email": [
+      "habibi.parsa@yahoo.com"
+    ]
+  },
+  {
+    "fname": [
+      "Parsa",
+      ""
+    ],
+    "lname": [
+      "Habibi",
+      ""
+    ],
+    "age": [
+      "2018-02-07",
+      ""
+    ],
+    "email": [
+      "habibi.parsa@yahoo.com"
+    ]
+  },
+  {
+    "fname": [
+      "",
+      ""
+    ],
+    "lname": [
+      "",
+      ""
+    ],
+    "age": [
+      "",
+      ""
+    ],
+    "email": [
+      ""
+    ]
+  },
+  {
+    "fname": [
+      "Jackson",
+      ""
+    ],
+    "lname": [
+      "Hue",
+      ""
+    ],
+    "age": [
+      "",
+      ""
+    ],
+    "email": [
+      "new@EMAIL.COM",
+      "K2@yahoo.com",
+      "P2@yahoo.com"
+    ]
+  }
+]
+                                       var table = document.getElementById("thetable");                                         var table_arr = new Array;                                         table_arr[0] = table.insertRow(0);
+                                         var the_table_top = ["fname","lname","age","email"];                                         for(var j = 0 ; j < 4 ; j++ ){                                             table_arr[0].insertCell(j);                                         }
+                                         for(var j = 0 ; j < the_table_top.length ;j++){
+                                             table.rows[0].cells[j].innerHTML = the_table_top[j];
 
-											}</script></body></html>
+																					 }
+																					 for(i = 1 ; i < jason_object.length ; i++ )																				 	{																							table_arr[i] = table.insertRow(1);																							for(j = 0 ; j < the_table_top.length; j++)																						{																									table_arr[i].insertCell(-1);																							if(jason_object[i][the_table_top[j]] != ",")																						{																								table.rows[1].cells[j].innerHTML = jason_object[i][the_table_top[j]];																						}																						else																						{																								table.rows[1].cells[j].innerHTML = "none";																						}																					}
+																					}</script></body></html>

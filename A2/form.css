@@ -1,0 +1,126 @@
+body{
+  background-color : #A9B2C3;
+  font-family: Helvetica,Arial,sans-serif;
+}
+
+
+#New{
+
+    padding: 14px 20px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+}
+#send{
+
+    padding: 14px 20px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+}
+
+Button:hover{
+  background-color : Grey;
+  color : White;
+}
+#nothing{
+  background-color: #A9B2C3;
+  padding:2px 20px;
+  margin : 5px;
+  width: 120%;
+  position:relative;
+  right: 60px;
+}
+
+#form{
+  background-color: #93CCEA;
+  padding:14px 20px;
+  margin : 5px;
+  width: 30%;
+}
+
+#start{
+  background-color: #93CCEA;
+  padding:14px 20px;
+  margin : 5px;
+  width: 30%;
+}
+
+#fname:hover{
+  background-color : Grey;
+  color : White;
+}
+#lname:hover{
+  background-color : Grey;
+  color : White;
+}
+#email:hover{
+  background-color : Grey;
+  color : White;
+}
+#age:hover{
+  background-color : Grey;
+  color : White;
+}
+
+#fname {
+
+width: 60%;
+padding: 15px;
+margin: 5px 0 22px 0;
+display: inline-block;
+border: none;
+background: #f1f1f1;
+}
+#lname {
+  width: 60%;
+padding: 15px;
+margin: 5px 0 22px 0;
+display: inline-block;
+border: none;
+background: #f1f1f1;
+}
+#email {
+  width: 60%;
+padding: 15px;
+margin: 5px 0 22px 0;
+display: inline-block;
+border: none;
+position: relative;
+left: 32px;
+background: #f1f1f1;
+}
+#age {
+width: 60%;
+padding: 15px;
+margin: 5px 0 22px 0;
+display: inline-block;
+border: none;
+position: relative;
+left: 25px;
+background: #f1f1f1;
+}
+
+#newm{
+  position: relative;
+  left : 35px
+}
+
+#flable{
+  font-size: 30px
+}
+#llable{
+  font-size: 30px
+}
+
+#elable{
+  font-size: 30px
+}
+
+#alable{
+  font-size: 30px
+}

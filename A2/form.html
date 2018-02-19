@@ -2,58 +2,80 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" type="text/css" href="form.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <meta charset="utf-8">
   <meta name="keywords" content="Parsa, Habibi, Male">
-  <title>My page</title>
+  <title>THE DAD OF ALL FORMS</title>
 
 </head>
 
 <body>
   <!-- page content -->
-  <h1> My FORM </h1>
+  <p> The features include :</br>
+        table of users.</br>
+        ability to add more than 1 email.</br>
+        email check.</br>
+        hovering over table cells. </br>
+        button layouts. </br>
+      </p>
+  <center>
+  <h1 id = "thehead"> The Dad Of All Forms</h1>
+</center>
   <div>
-    <form id="form" name='simpleform' method='POST' action='http://localhost:8080'>
+    <center>
+    <form  id= "form1" class="w3-animate-opacity" name='simpleform' method='POST' action='http://cmpt218.csil.sfu.ca:20682/sumbit.html'>
 
-      <div>
+      <div id="form" >
 
-        <label for="fname">F Name:</label> <input id="fname" placeholder='first' name='fname' type='text' /> <br />
-        <label for="lname">L Name:</label> <input name='lname' placeholder='last' type='text' /> <br />
+        <label id ="flable" for="fname">Fisrt Name:</label> <input id="fname" placeholder='first' name='fname' type='text' /> <br />
+        <label id ="llable" for="lname">Last Name:</label> <input id="lname"name='lname' placeholder='last' type='text' /> <br />
         <div id = "ogparent">
-        <label for="email">Email:</label> <input name='email' placeholder='email' type='email' />
+        <label id ="elable" for="email">Email:</label> <input id="email" name='email' placeholder='email' type='email' />
 
-        <button type="button" onclick="newemail(this)">+</button>
+        <button class="w3-animate-opacity" type="button" id ="newm" onclick="newemail(this)">+</button>
         <br />
       </div>
         <div id="emailstart"></div>
 
-        <label for="age">Age:</label> <input name='age' placeholder='0' type='number' step='1' /> <br />
+        <label style = "font-size: 30px" for="age">Age:</label> <input id="age" name='age' placeholder='0' type='date' step='1' /> <br />
         <input id="emailcounter" name = "emailcount" type='hidden' value ="" /> </br>
       </div>
-      <div id="start">
+      <div  id="start">
+
 
       </div>
-     <button type="button" onclick="formsubmit()">Send</button>
-      <button type="button" id="New" onclick="newuser()"> Create new </button> <br />
+
+     <button class="w3-animate-opacity" type="button" id = "send"onclick="formsubmit()">Send</button>
+      <button class="w3-animate-opacity" type="button" id="New" onclick="newuser()"> Create new </button> <br />
 
       <div style="display:none">
         <div id="inputs">
-          <label for="fname">F Name:</label> <input id="fname" placeholder='first' name='fname' type='text' /> <br />
-          <label for="lname">L Name:</label> <input name='lname' placeholder='last' type='text' /> <br />
+          <label id ="flable"for="fname">F Name:</label> <input id="fname" placeholder='first' name='fname' type='text' /> <br />
+          <label id ="llable"for="lname">L Name:</label> <input  id="lname" name='lname' placeholder='last' type='text' /> <br />
         <div id = "emailparent">
-          <label for="email">Email:</label> <input name='email' placeholder='email' type='email' />
-          <button type="button" onclick="newemail(this)">+</button>
+          <label id ="elable" for="email">Email:</label> <input id="email" name='email' placeholder='email' type='email' />
+
+          <button class="w3-animate-opacity" type="button" id ="newm" onclick="newemail(this)">+</button>
         </br>
       </div>
-          <label for="age">Age:</label> <input name='age' placeholder='0' type='number' step='1' /> <br />
+          <label id ="alable" for="age">Age:</label> <input id = "age" name='age' placeholder='0' type='date' step='1' /> <br />
+
           <div style= "display:none">
             <div id="emaildiv">
-            <label for="email">Email:</label> <input name='email' placeholder='email' type='email' />
+            <label  id ="elable" for="email">Email:</label> <input id = "email" name='email' placeholder='email' type='email' />
             </div>
           </div>
-
+  <div id="nothing" ></div>
         </div>
+
+
+
+
       </div>
+
     </form>
+  </center>
 
   </div>
   <script  src="script.js"></script>
