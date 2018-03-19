@@ -63,6 +63,19 @@ h1{
 
   }
 
+	#box {
+  	background: radial-gradient(ellipse at center,  rgba(81,112,173,1) 0%,rgba(53,84,147,1) 100%);
+  	border:1px solid #2d416d;
+  	box-shadow: 0 1px #5670A4 inset, 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  	border-radius: 5px;
+  	width: 360px;
+  	height: 380px;
+  	margin: 60px auto;
+  	padding: 50px 30px 0 30px;
+  	text-align: center;
+
+  }
+
 
 
 	#pass {
@@ -105,7 +118,27 @@ h1{
 		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
 		font-weight: 700;
 		box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.17), 0 1px 0 rgba(255, 255, 255, 0.36) inset;
-		position: relative;
+		position: relative;history
+		top: 50%;
+
+	}
+
+	#history{
+		font-family: 'Lato', sans-serif;
+		font-weight: 400;
+		background: linear-gradient(to bottom,  rgba(224,224,224,1) 0%,rgba(206,206,206,1) 100%);
+		display: block;
+		margin: 20px auto 0 auto;
+		width: 25%;
+		border: none;
+		border-radius: 3px;
+		padding: 8px;
+		font-size: 17px;
+		color: #535353;
+		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+		font-weight: 700;
+		box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.17), 0 1px 0 rgba(255, 255, 255, 0.36) inset;
+		position: relative;history
 		top: 50%;
 
 	}

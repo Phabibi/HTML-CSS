@@ -1,3 +1,5 @@
+
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -6,9 +8,24 @@
 
     <title>Users</title>
 
-    <link rel="stylesheet" href="./Public/css/style.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
 
 </head>
 <body>
-  <h1> Welcome Adming </h1>
+<div id= "login">
+    <section>
+      <form id ="form" action="" method="post">
+        <h1>Admin Login</h1>
+          <input type="text" id="checkinid" name="id" placeholder="Check-in-ID" required /> <br />
+
+          <button id="button"> Start Check-in</button>
+      </form>
+
+      <button id= "history" > View History <button>
+    </section>
+<div/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./js/login.js"></script>
+
 </body>
+</html>

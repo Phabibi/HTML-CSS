@@ -5,6 +5,9 @@ var serverIndex = require('serve-index');
 var http = require('http');
 var path = require('path');
 var session =require('express-session');
+var fs = require('fs');
+
+var admincheck = require('./Public/js/admincheck.js');
 
 var username;
 var pass;
@@ -12,6 +15,8 @@ var pass;
 var port = process.env.PORT || 3000;
 var users = [];
 var ssn;
+
+var current_course;
 
 // parsing body
 app.use(express.json());
@@ -70,7 +75,6 @@ app.post('/', function(req,res,next){
   {
     console.log("loging in adming user");
     return res.redirect('/admin');
-
   }
 
   else {
@@ -110,6 +114,15 @@ app.get('/admin',function(req,res,next)
   next();
 });
 
+app.post('/admin',function(req,res,next)
+{
+
+  console.log("the course added is: ",req.body.id);
+  current_course = req.body.id;
+  return res.redirect("/admincheck");
+
+});
+
 app.get('/checkin',function(req,res)
 
 {
@@ -117,6 +130,55 @@ app.get('/checkin',function(req,res)
   return res.sendFile(__dirname + "/checkin.html");
 });
   //console.log(req.body);
+
+  app.get('/admincheck',function(req,res)
+
+  {
+    console.log("writing to file");
+
+    var page_create = admincheck.courseid(current_course);
+
+    fs.writeFile("./admincheck.html",page_create,function(err,data){
+
+      if(err)
+      {
+        console.log(err);
+      }
+
+      else{
+        console.log("file write success")
+        res.sendFile(__dirname + "/admincheck.html");
+      }
+
+  });
+
+  });
+app.post('/admincheck',function(req,res){
+
+  console.log("stopping the checkin");
+  current_course = '';
+  console.log(current_course);
+  res.redirect('/admin');
+});
+  app.post('/checkin',function(req,res)
+  {
+    console.log("Checking in to the course");
+
+if(current_course)
+{
+  if(req.body.checkstr === current_course)
+  {
+    console.log("the course exsists, succesfull ");
+    res.redirect("/");
+  }
+}
+else {
+    console.log("the course doesnt exist, error");
+    res.redirect("/checkin");
+}
+
+
+  });
 
 app.delete('/users-api/:id', function(req,res,next){
   // search database for id
