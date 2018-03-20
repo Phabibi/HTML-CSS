@@ -17,6 +17,7 @@ var users = [];
 var ssn;
 
 var current_course;
+var name;
 
 // parsing body
 app.use(express.json());
@@ -160,6 +161,8 @@ app.post('/admincheck',function(req,res){
   console.log(current_course);
   res.redirect('/admin');
 });
+
+
   app.post('/checkin',function(req,res)
   {
     console.log("Checking in to the course");
@@ -169,7 +172,8 @@ if(current_course)
   if(req.body.checkstr === current_course)
   {
     console.log("the course exsists, succesfull ");
-    res.redirect("/");
+    name = req.body.name;
+    res.redirect("/submit");
   }
 }
 else {
@@ -179,6 +183,25 @@ else {
 
 
   });
+
+  app.get('/submit', function(req,res){
+    console.log("the name of person", name);
+    var sub_create = admincheck.checkinsuc(name,current_course);
+
+    fs.writeFile("./submit.html",sub_create,function(err,data){
+
+      if(err)
+      {
+        console.log(err);
+      }
+
+      else{
+        console.log("file write success")
+        res.sendFile(__dirname + "/submit.html");
+      }
+
+  });
+});
 
 app.delete('/users-api/:id', function(req,res,next){
   // search database for id

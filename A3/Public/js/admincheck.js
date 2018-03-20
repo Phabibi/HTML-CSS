@@ -31,3 +31,44 @@ exports.courseid = function(id) {
 `
 return page;
 }
+
+
+exports.checkinsuc = function(id, course){
+  var page = `<!DOCTYPE html>
+  <html>
+  <head>
+
+      <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+      <meta charset="utf-8">
+
+      <title>Users</title>
+
+      <link rel="stylesheet" href="./css/style.css"/>
+
+  </head>
+  <body>
+  <div id= "box">
+      <section>
+
+          <h1>Thank You for Your Submitting in `
+
+           page += course;
+           page += id + `!`;
+           page += `</h1>
+
+
+
+
+
+
+
+      </section>
+  <div/>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="./js/login.js"></script>
+
+  </body>
+  </html>
+`
+return page;
+}
