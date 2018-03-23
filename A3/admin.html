@@ -19,9 +19,11 @@
           <input type="text" id="checkinid" name="id" placeholder="Check-in-ID" required /> <br />
 
           <button id="button"> Start Check-in</button>
+          <!-- <input type = "submit" value= "Start Checkin" id= "check" /> -->
       </form>
-
-      <button id= "history" > View History <button>
+      <form id= "historyform" action= "http://localhost:3000/history"method ="post">
+        <input type = "submit" value= "View History" id= "history" />
+      </form>
     </section>
 <div/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

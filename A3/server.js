@@ -6,11 +6,27 @@ var http = require('http');
 var path = require('path');
 var session =require('express-session');
 var fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://cmpt218:pass@ds061777.mlab.com:61777/cmpt218"
+// {
+//
+//   poolSize: 20,
+//   {socketTimeoutMS:480000},
+//   {keepAlive: 300000},
+//   {ssl: true},
+//   {sslValidate: false}
+//
+// };
 
 var admincheck = require('./Public/js/admincheck.js');
 
 var username;
 var pass;
+var dbo;
+var students;
+var users;
+var student_table;
+var date;
 
 var port = process.env.PORT || 3000;
 var users = [];
@@ -40,6 +56,17 @@ var admin_option= {
   extensions: ['htm','html'],
   index: "admin.html"
 }
+
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  console.log("Database created!");
+
+  dbo = db.db("cmpt218");
+  students = dbo.collection("students");
+  console.log("Collection created");
+  });
+
 
 
 app.use('/', function(req,res,next){
@@ -118,8 +145,36 @@ app.get('/admin',function(req,res,next)
 app.post('/admin',function(req,res,next)
 {
 
-  console.log("the course added is: ",req.body.id);
+  console.log("the course added is: ",req.body);
   current_course = req.body.id;
+  date = new Date();
+  var month = date.getUTCMonth() + 1;
+  var day = date.getUTCDate();
+  var year = date.getUTCFullYear();
+
+  var newdate = year + "/" + month + "/" + day;
+
+  var hours = date.getHours();
+  var mins = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+
+  mins = mins < 10 ? '0' + mins : mins;
+
+
+  var newtime = hours + ":" + mins + " " + ampm;
+
+  date = newtime;
+
+
+
+  students.insert({open:"true", checkinID: current_course, date: date, users: []}, function(err){
+    if(err) throw err;
+
+    console.log("table is inserted are now insertd.");
+  })
   return res.redirect("/admincheck");
 
 });
@@ -158,14 +213,50 @@ app.post('/admincheck',function(req,res){
 
   console.log("stopping the checkin");
   current_course = '';
-  console.log(current_course);
-  res.redirect('/admin');
+  var open = {open: 'true'};
+  var close = {$set: {open: 'false'}};
+  students.updateOne(open,close, function(err,data){
+    if(err) throw err;
+    console.log("check in is no longer open")
+  });
+
+
+  dbo.collection("students").find({date: date}).toArray(function(err, result) {
+   if (err) throw err;
+   //var somer = JSON.parse(result.users);
+
+   for(var i = 0; i < result.length; i++)
+   {
+       result[i] = result[i].users;
+   }
+
+   var peser = JSON.stringify(result);
+   peser = JSON.parse(peser);
+   console.log("these are the peser ", peser);
+
+   var current_create = admincheck.history(peser);
+   fs.writeFile("./current.html",current_create,function(err,data){
+
+     if(err)
+     {
+       console.log(err);
+     }
+
+     else{
+       console.log("file write to peser success")
+       res.sendFile(__dirname + "/current.html");
+     }
+
+ });
+
+
+ });
 });
 
 
   app.post('/checkin',function(req,res)
   {
-    console.log("Checking in to the course");
+    console.log("Checking in to the course" , current_course);
 
 if(current_course)
 {
@@ -173,6 +264,21 @@ if(current_course)
   {
     console.log("the course exsists, succesfull ");
     name = req.body.name;
+    // usrid = req.body.userid;
+    //
+    // var users = [name , usrid];
+
+    var nusers = {
+      name: req.body.name,
+      userid: req.body.userid,
+      courseid: current_course,
+      time: date
+    };
+
+    console.log("users type of is",typeof(nusers));
+    console.log("the user inserted is ", JSON.stringify(nusers));
+    students.update({open:"true", date: date, checkinID: current_course}, {$push: {users: JSON.stringify(nusers)}});
+    console.log("users are now insertd.");
     res.redirect("/submit");
   }
 }
@@ -183,6 +289,10 @@ else {
 
 
   });
+
+  // app.get('/history', function(req,res){
+  //
+  // });
 
   app.get('/submit', function(req,res){
     console.log("the name of person", name);
@@ -203,6 +313,44 @@ else {
   });
 });
 
+app.post('/history', function(req,res){
+  dbo.collection("students").find({}).toArray(function(err, result) {
+   if (err) throw err;
+   //var somer = JSON.parse(result.users);
+
+
+console.log("length of table", result.length);
+
+   for(var i = 0; i < result.length; i++)
+   {
+       result[i] = result[i].users;
+   }
+
+   var reser = JSON.stringify(result);
+   reser = JSON.parse(reser);
+   console.log("these are the students ", reser);
+
+   var history_create = admincheck.history(reser);
+   fs.writeFile("./history.html",history_create,function(err,data){
+
+     if(err)
+     {
+       console.log(err);
+     }
+
+     else{
+       console.log("file write to history success")
+       res.sendFile(__dirname + "/history.html");
+     }
+
+ });
+
+
+ });
+});
+
+
+
 app.delete('/users-api/:id', function(req,res,next){
   // search database for id
   users = users.filter(function(people){
@@ -210,6 +358,9 @@ app.delete('/users-api/:id', function(req,res,next){
   });
   res.json(users);
 });
+
+
+
 
 http.createServer(app).listen(port);
 console.log('running on port',port);
